@@ -1,0 +1,23 @@
+nums = [3, 2, 4]
+dicts = []
+target = 6
+
+for index, v in enumerate(nums):
+    dicts.append(index)
+print(dicts)
+for i in dicts[:index]:
+    num2 = target - nums[i]
+    for j in dicts[i+1:]:
+        if nums[j] == num2:
+            print([i,j])
+            break
+            break
+
+        # for index, v in enumerate(nums):
+        #     dicts.append(index)
+        # for i in dicts[:index]:
+        #     num2 = target - nums[i]
+        #     for j in dicts[i+1:]:
+        #         if nums[j] == num2:
+        #             break
+        #             return i,j
