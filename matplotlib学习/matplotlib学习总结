@@ -1,0 +1,81 @@
+'''首先导入模板和设置中文字体'''
+%matplotlib inline
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+import sympy
+plt.rcParams['font.sans-serif']=['SimHei/fangsong'] #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus']=False #用来正常显示负号
+
+
+'''方法一：可以直接生成一个figure和一个axes'''
+fig, ax = plt.subplots()
+fig, ax = plt.subplots(nrows=3, ncols=2)#多个子图
+
+
+'''方法二：也可以先fig，再ax'''
+fig = plt.figure(figsize=(8,6), facecolor='#xxxxx')#宽高英寸和画布颜色
+left, bottom, width, height = 0.1, 0.1, 0.8, 0.8
+ax = fig.add_axes((left, bottom, width, height), facecolor='#xxxxx')
+
+
+'''中间绘图过程'''
+x = np.linspace(start, end, num)#样本数量
+y1 = 
+y2 = 
+ax.plot(x, y1, color='blue', label='y(x)',
+		lw=, ls=, marker= )#label用于生成图例legend,线宽线型标记
+ax.set_title("", loc='right/left/center')
+ax.set_xlabel("x")#设置x轴的标签
+ax.legend(bbox_to_anchor=(1.02,1))#显示图例,按坐标点放
+
+
+'''最后保存图片'''
+fig.savefig("graph.png",dpi=100, facecolor="")
+
+
+'''多张图的控制用axes'''
+fig,axes = plt.subplots(1, 4, figsize=(12,3))
+axes[0]./axes[1].#后续用带索引的axes控制方法
+
+
+
+'''绘图的可有可无环节'''
+
+#文本
+ax.text(0, 0.1, "", fontsize='',family='serif')#文本标签
+ax.annotate("", fontsize=,family='',
+	xy=(1,0),xycoords="data",
+	xytext=(+20, +50),textcords="offset points",
+	arrowprops=dict(arrowstyle="->", connectionstyle="arc3, rad=.5"))
+	#注释。xycoords/textcords是点和文本的坐标系，可百度各类型
+ax.text(2, 0.1, r"自行百度方程怎么打", fontsize=,family=)
+
+#轴属性
+ax.set_xlim(-3,3)#设置x轴边界
+ax.set_xticks([pi, 2*pi])#在x轴上能显示的刻度值
+ax.set_xlabel("",labelpad=)#设置标签与轴的距离
+ax.axis('tight/equal')#tight:紧密匹配/equal:xy的单位长度相同
+ax.xaxis.set_major_locator(mpl.ticker.MaxNLocator(4))#自动划分n个interval,显示n-1个数字
+ax.xaxis.set_minor_locator(mpl.ticker.MultipleLocator(2))#在基数的倍数设置刻度
+ax.yaxis.set_minor_locator(mpl.ticker.FixedLocator([-1,0,1]))#指定数值处设刻度
+
+#网格线
+ax.grid(color='',which='major/minor/both',
+	axis='x/y/both',linestyle=":",lw=0.5)
+
+#修改边框线
+ax.spines['right/left/top/bottom'].set_color('none')#去除四个方向的框线
+ax.xaxis.set_ticks_position('bottom')#去除底部的框线刻度
+ax.spines['bottom'].set_position(('data',0))
+ax.spines['left'].set_position(('data',0))#底部左侧的边框线移到x=0,y=0处
+
+'''常用绘图函数'''
+ax.step(x, y, where='pre/mid/post')#阶梯在点的前/中/后
+ax.bar(x, height, width)#height就是y
+ax.scatter(x, y, c='r', marker='', norm=0/1)#也可以c=list,cmap=设置为渐变
+
+
+
+
+
